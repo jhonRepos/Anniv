@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anniv</title>
+  <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+<style>
+ 
+</style>
+</head>
+
+<body>
+
+
+    <canvas class="container3D"></canvas> 
+  <div class="firsPage">
+    <header>
+      <label class="luvya">Happy anniversary</label>
+    </header>
+    <div class="clickable">
+      <h1 class="title-btn" >HEART BEAT</h1>
+
+		
+    </div>
+   
+  </div>
+  <div>
+  <div class="secondPage">
+      <div class="container">
+
+      </div>
+
+  </div>
+
+  <audio controls id="myAudio" style="display: none;" >
+    <source src="./assets/img/ssstik.io_1708705148457.mp3" type="audio/mp3">
+    
+</audio>
+</body>
+
+</html>
+ <script src="./assets/js/script.js"></script> 
+<script type="importmap">
+    {
+      "imports": {
+        "three": "https://unpkg.com/three@0.120.1/build/three.module.js",
+        "three/addons/": "https://unpkg.com/three@0.120.1/examples/jsm/"
+      }
+    }
+
+  </script>
+  <script type="module">
+
+import * as THREE from 'three';
+    import { OrbitControls } from 'three/addons/controls/OrbitControls.js'; // Import OrbitControls
+    import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js'; // Import GLTFLoader
+  
+   
+    const scene = new THREE.Scene();
+
+
+      const sizes={
+        width: window.innerWidth,
+        height: window.innerHeight,
+      }
+      //create a new camera with positions and angles
+      const camera = new THREE.PerspectiveCamera(45, sizes.width / sizes.height );
+
+scene.add(camera)
+
+
+
+const textureLoader = new THREE.TextureLoader();
+const backgroundTexture = textureLoader.load('./assets/img/bg.png', (texture) => {
+  scene.background = texture;
+}, undefined, (err) => {
+  console.error('Error loading background texture', err);
+});
+
+//Keep the 3D object on a global variable so we can access it later
+let object;
+
+
+
+//Set which object to render
+let objToRender = 'crystal_heart';
+
+//Instantiate a loader for the .gltf file
+const loader = new GLTFLoader();
+
+//Load the file
+loader.load(
+  `assets/img/${objToRender}/scene.gltf`,
+  function (gltf) {
+    //If the file is loaded, add it to the scene
+    object = gltf.scene;
+    scene.add(object);
+    animate();
+  },
+  function (xhr) {
+    //While it is loading, log the progress
+    console.log((xhr.loaded / xhr.total * 100) + '% loaded');
+  },
+  function (error) {
+    //If there is an error, log it
+    console.error(error);
+  }
+);
+
+//Instantiate a new renderer and set its size
+const canvas =document.querySelector(".container3D");
+const renderer = new THREE.WebGLRenderer({ canvas }); 
+renderer.setSize(sizes.width , sizes.height );
+
+//Set how far the camera will be from the 3D model
+
+camera.position.z = 5 ;
+//Add lights to the scene, so we can actually see the 3D model
+const topLight = new THREE.DirectionalLight(0xffffff, 1,100); // (color, intensity)
+topLight.position.set(0, 10, 100) //top-left-ish
+topLight.castShadow = true;
+scene.add(topLight);
+
+const ambientLight = new THREE.AmbientLight(0x333333,  1);
+scene.add(ambientLight);
+
+//This adds controls to the camera, so we can rotate / zoom it with the mouse
+
+ const controls = new OrbitControls(camera, canvas);
+ controls.enableDamping=true;
+  controls.enableZoom=false;
+  controls.autoRotate=true;
+
+window.addEventListener('resize',()=>{
+
+  sizes.width = innerWidth;
+   sizes.height= innerHeight;
+   
+   camera.aspect =  sizes.width / sizes.height;
+    camera.updateProjectionMatrix();
+   renderer.setSize(sizes.width , sizes.height);
+   
+})
+let clock = new THREE.Clock();
+
+const loop =()=>{
+   controls.update();
+  renderer.render(scene, camera);
+   requestAnimationFrame(loop);
+  
+
+    // heart beat effect
+  // const elapsedTime = clock.getElapsedTime();
+  // const scale = 0.5 * Math.sin(elapsedTime * Math.PI) + 1; 
+  // object.scale.set(scale, 1, scale);
+
+}
+loop()
+
+function animate() {
+  controls.update();
+  requestAnimationFrame(animate);
+
+  // heart beat effect
+  const elapsedTime = clock.getElapsedTime();
+  const scale = 0.5 * Math.sin(elapsedTime * Math.PI) + 1; 
+  object.scale.set(scale, 1, scale);
+
+  renderer.render(scene, camera);
+}
+  </script>
