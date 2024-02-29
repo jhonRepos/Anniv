@@ -65,7 +65,7 @@ box.position.set(0,-0.3,0);
 const canvas =document.querySelector(".container3D");
 const renderer = new THREE.WebGLRenderer({ canvas }); 
 renderer.setSize(sizes.width , sizes.height );
-
+renderer.setPixelRatio(2);
 //Set how far the camera will be from the 3D model
 
 camera.position.z = 5 ;
