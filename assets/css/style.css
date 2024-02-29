@@ -9,7 +9,7 @@
   }
 
   body,html{
-    overflow: hidden;
+    /* overflow: hidden; */
   }
 
 .container3D{
@@ -39,6 +39,7 @@ header{
 .secondPage{
   position: relative;
     z-index: 2;
+    max-height: 200vh; 
   }
 
   .container{
@@ -47,7 +48,7 @@ header{
     align-items: center;
     flex-wrap: wrap;
     gap: 10px;
-    height: 100vh;
+    max-height: 200vh; 
   }
  .secondPageActive{
     
