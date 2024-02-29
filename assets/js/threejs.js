@@ -49,12 +49,12 @@ loader.load(
 
 const boxGeometry = new THREE.BoxGeometry(0.9,0.9,0.9);
 const boxMaterial =[
-new THREE.MeshBasicMaterial({map : textureLoader.load('./assets/img/1yr.png')}),
-new THREE.MeshBasicMaterial({map : textureLoader.load('./assets/img/2nyrs.png')}),
-new THREE.MeshBasicMaterial({map : textureLoader.load('./assets/img/2yrs.png')}),
-new THREE.MeshBasicMaterial({map : textureLoader.load('./assets/img/3yrs.png')}),
-new THREE.MeshBasicMaterial({map : textureLoader.load('./assets/img/4yrs.png')}),
-new THREE.MeshBasicMaterial({map : textureLoader.load('./assets/img/first.png')}),
+new THREE.MeshBasicMaterial({map : textureLoader.load('./assets/img/1yr.PNG')}),
+new THREE.MeshBasicMaterial({map : textureLoader.load('./assets/img/2nyrs.PNG')}),
+new THREE.MeshBasicMaterial({map : textureLoader.load('./assets/img/2yrs.PNG')}),
+new THREE.MeshBasicMaterial({map : textureLoader.load('./assets/img/3yrs.PNG')}),
+new THREE.MeshBasicMaterial({map : textureLoader.load('./assets/img/4yrs.PNG')}),
+new THREE.MeshBasicMaterial({map : textureLoader.load('./assets/img/first.PNG')}),
 ];
 const box =new THREE.Mesh(boxGeometry,boxMaterial);
 scene.add(box);
