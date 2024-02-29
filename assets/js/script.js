@@ -34,21 +34,39 @@ const data=[
 ]
  const cardContainer= document.querySelector('.container')
 
-const titleBtn= document.querySelector('.title-btn')
 
-
-titleBtn.addEventListener('click', function() {
+ const btn1= document.querySelector('.btn1')
+ const btn2= document.querySelector('.btn2')
  
- var audio = document.getElementById("myAudio").play();
-  var firsPage = document.querySelector(".firsPage");
-    var secondPage = document.querySelector(".container");
-    
-   
-        firsPage.style.display = "none";
-        secondPage.style.display = "flex";
-        secondPage.classList.add("secondPageActive");
+ btn1.addEventListener('click', function() {
   
-});
+  var audio = document.getElementById("myAudio").play();
+ 
+   var firsPage = document.querySelector(".firsPage");
+     var secondPage = document.querySelector(".container");
+     var containerHead = document.querySelector(".container-header");
+ 
+    
+         firsPage.style.display = "none";
+         secondPage.style.display = "flex";
+         containerHead.style.display = "flex";
+         secondPage.classList.add("secondPageActive");
+   
+ });
+ 
+ btn2.addEventListener('click', function() {
+ 
+   var firsPage = document.querySelector(".firsPage");
+     var secondPage = document.querySelector(".container");
+     var containerHead = document.querySelector(".container-header");
+ 
+    
+         firsPage.style.display = "block";
+         secondPage.style.display = "none";
+         containerHead.style.display = "none";
+         secondPage.classList.remove("secondPageActive");
+   
+ });
 
 data.forEach(item=>{
     const card = document.createElement('div');
