@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'ballonfont'; /* Choose a name for your font */
-    src: url('./assets/css/Lovely_Balloon.ttf') format('truetype'); /* Provide the path to your TTF font file */
+    src: url('./Lovely_Balloon.ttf format('truetype'); /* Provide the path to your TTF font file */
   }
 
   *{
