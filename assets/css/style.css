@@ -10,10 +10,11 @@
 
   body,html{
     /* overflow: hidden; */
+    background: rgb(252,222,193);
+  background: linear-gradient(90deg, rgba(252,222,193,1) 37%, rgba(253,228,195,1) 46%, rgba(223,48,129,1) 92%, rgba(158,0,108,1) 100%);
+
   }
-canvas{
-  overflow: hidden;
-}
+
 .container3D{
     position: absolute;
     top: 0;
