@@ -19,11 +19,6 @@ scene.add(camera)
 
 
 const textureLoader = new THREE.TextureLoader();
-const backgroundTexture = textureLoader.load('./assets/img/bg.png', (texture) => {
-  scene.background = texture;
-}, undefined, (err) => {
-  console.error('Error loading background texture', err);
-});
 
 //Keep the 3D heart on a global variable so we can access it later
 let heart;
@@ -63,7 +58,7 @@ box.position.set(0,-0.3,0);
 
 //Instantiate a new renderer and set its size
 const canvas =document.querySelector(".container3D");
-const renderer = new THREE.WebGLRenderer({ canvas }); 
+const renderer = new THREE.WebGLRenderer({ canvas,alpha:true  }); 
 renderer.setSize(sizes.width , sizes.height );
 renderer.setPixelRatio(2);
 //Set how far the camera will be from the 3D model

@@ -11,7 +11,9 @@
   body,html{
     /* overflow: hidden; */
   }
-
+canvas{
+  overflow: hidden;
+}
 .container3D{
     position: absolute;
     top: 0;
@@ -39,7 +41,7 @@ header{
 .secondPage{
   position: relative;
     z-index: 2;
-    max-height: 200vh; 
+
   }
 
   .container{
